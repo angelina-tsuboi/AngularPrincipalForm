@@ -11,29 +11,28 @@ import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export class AppComponent {
   userForm: FormGroup;
-  user = {prefix: "", postfix: "", firstName: "", gender: "", middleName: "", lastName: "", date: null, ssn: "", phone: "", altPhone: "", email: ""};
 
   constructor(private formBuilder: FormBuilder) { 
     this.userForm = this.formBuilder.group({
-      prefix: new FormControl(this.user.prefix),
-      postfix: new FormControl(this.user.postfix),
-      firstName: new FormControl(this.user.firstName, [
+      prefix: new FormControl(""),
+      postfix: new FormControl(""),
+      firstName: new FormControl("", [
         Validators.required
       ]),
-      middleName: new FormControl(this.user.middleName),
-      lastName: new FormControl(this.user.lastName, [
+      middleName: new FormControl(""),
+      lastName: new FormControl("", [
         Validators.required
       ]),
-      gender: new FormControl(this.user.gender, [
+      gender: new FormControl("", [
         Validators.required
       ]),
-      date: new FormControl(this.user.date, [
+      date: new FormControl(null, [
         this.checkDateAndSSN()
       ]),
-      phone: new FormControl(this.user.phone),
-      altPhone: new FormControl(this.user.altPhone),
-      email: new FormControl(this.user.email),
-      ssn: new FormControl(this.user.ssn, [
+      phone: new FormControl(""),
+      altPhone: new FormControl(""),
+      email: new FormControl(""),
+      ssn: new FormControl("", [
         this.checkDateAndSSN()
       ]),
     });
@@ -41,9 +40,9 @@ export class AppComponent {
 
    checkDateAndSSN(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      if(!this.userForm) return {validValue: true};
+      if(!this.userForm) return {invalidValue: true};
       const validate = this.getFieldValue("ssn").length == 0 && this.getFieldValue("date") == null;
-      return validate ? {validValue: true} : null;
+      return validate ? {invalidValue: true} : null;
     };
   }
 
@@ -53,6 +52,10 @@ export class AppComponent {
   
   getFieldValue(field: string){
     return this.userForm.get(field).value;
+  }
+
+  validateForm(){
+    return !this.isFieldInvalid("gender") && !this.isFieldInvalid("firstName") && !this.isFieldInvalid("lastName") && (!this.isFieldInvalid("date") || !this.isFieldInvalid("ssn"));
   }
 
   submitForm(){

@@ -8,7 +8,7 @@
             <div>
               <div class="multi-item-row">
                 <nb-form-field>
-                  <input nbInput placeholder="Prefix i.e. Mr, Ms" >
+                  <input nbInput placeholder="Prefix i.e. Mr, Ms" formControlName="prefix" id="prefix">
                 </nb-form-field>
                 <nb-form-field>
                   <input nbInput placeholder="[Choose Gender]" formControlName="gender" id="gender" [status]="(!isFieldInvalid('gender')) ? 'basic' : 'danger'" required>
@@ -25,7 +25,7 @@
               </nb-form-field>
 
               <nb-form-field>
-                <input nbInput fullWidth placeholder="Middle Name">
+                <input nbInput fullWidth placeholder="Middle Name" formControlName="middleName" id="middleName">
               </nb-form-field>
 
               <nb-form-field>
@@ -37,7 +37,7 @@
                 </ng-container>
               </nb-form-field>
 
-              <input nbInput fullWidth placeholder="Postfix ie. Dr., Jr., ll">
+              <input nbInput fullWidth placeholder="Postfix ie. Dr., Jr., ll" formControlName="postfix" id="postfix">
             </div>
             <div>
               <nb-form-field>
@@ -64,11 +64,11 @@
               </nb-form-field>
 
               <nb-form-field>
-                <input nbInput fullWidth type="email" placeholder="Email">
+                <input nbInput fullWidth type="email" placeholder="Email" formControlName="email" id="email">
               </nb-form-field>
 
               <nb-form-field>
-                <input nbInput fullWidth placeholder="Phone (000) 000-0000" type="tel">
+                <input nbInput fullWidth placeholder="Phone (000) 000-0000" type="tel" formControlName="phone" id="phone">
                 <ng-container>
                   <p class="caption status-basic-100">
                     Enter primary phone number.
@@ -77,7 +77,7 @@
               </nb-form-field>
 
               <nb-form-field>
-                <input nbInput fullWidth placeholder="Alternate Phone (000) 000-0000 (EVC)" type="tel">
+                <input nbInput fullWidth placeholder="Alternate Phone (000) 000-0000 (EVC)" type="tel" formControlName="altPhone" id="altPhone">
                 <ng-container>
                   <p class="caption status-basic-100">
                     Enter secondary EVC phone number (Not Required).
@@ -85,15 +85,13 @@
                 </ng-container>
               </nb-form-field>
 
-              <button nbButton type="submit" size="small" status="info" (click)="submitForm()" [disabled]="!userForm.valid">Pull Credit
+              <button nbButton type="submit" size="small" status="info" (click)="submitForm()" [disabled]="!validateForm()">Pull Credit
                 Score</button>
             </div>
           </div>
         </form>
       </nb-card-body>
     </nb-card>
-
-
 
   </nb-layout-column>
 
