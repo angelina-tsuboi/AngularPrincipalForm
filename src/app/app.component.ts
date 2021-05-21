@@ -28,32 +28,35 @@ export class AppComponent {
         Validators.required
       ]),
       date: new FormControl(this.user.date, [
-        Validators.required,
         this.checkDateAndSSN()
       ]),
       phone: new FormControl(this.user.phone),
       altPhone: new FormControl(this.user.altPhone),
       email: new FormControl(this.user.email),
       ssn: new FormControl(this.user.ssn, [
-        Validators.required,
         this.checkDateAndSSN()
       ]),
     });
   }
 
-
-  checkDateAndSSN(): ValidatorFn {
-    return () : ValidationErrors | null => {
-      return this.user.date || this.user.ssn;
-    }
+   checkDateAndSSN(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if(!this.userForm) return {validValue: true};
+      const validate = this.getFieldValue("ssn").length == 0 && this.getFieldValue("date") == null;
+      return validate ? {validValue: true} : null;
+    };
   }
 
-  isFieldValid(field: string) {
+  isFieldInvalid(field: string) {
     return !this.userForm.get(field).valid;
+  }
+  
+  getFieldValue(field: string){
+    return this.userForm.get(field).value;
   }
 
   submitForm(){
-    console.log(this.userForm.get("firstName").value)
+    console.log(this.userForm.getRawValue());
   }
 
 }
