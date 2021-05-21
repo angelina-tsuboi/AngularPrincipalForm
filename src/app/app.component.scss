@@ -24,4 +24,18 @@
     button{
         float: right;
     }
+
+    #dateButton{
+        margin-bottom: 20px;
+    }
+
+    .multi-item-row{
+        display: flex;
+        width: 100% !important;
+        justify-content: space-between;
+
+        nb-form-field{
+            width: 46%;
+        }
+    }
 }

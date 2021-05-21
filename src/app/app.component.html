@@ -6,13 +6,15 @@
       <p style="font-weight: bold;">Principal</p>
       <div class="items-col">
         <div>
-          <nb-form-field>
-            <input nbInput placeholder="Prefix i.e. Mr, Ms">
-          </nb-form-field>
-          <nb-form-field>
-            <nb-select placeholder="[Choose Gender]">
-            </nb-select>
-          </nb-form-field>
+          <div class="multi-item-row">
+            <nb-form-field class="field1">
+              <input nbInput placeholder="Prefix i.e. Mr, Ms">
+            </nb-form-field>
+            <nb-form-field class="field2">
+              <input nbInput placeholder="[Choose Gender]">
+            </nb-form-field>
+          </div>
+         
           <nb-form-field>
             <input nbInput fullWidth placeholder="First Name">
             <ng-container>
@@ -39,9 +41,12 @@
         </div>
         <div>
           <nb-form-field>
-            <nb-icon nbSuffix icon="calendar" pack="eva"></nb-icon>
+            <button nbSuffix nbButton ghost (click)="dateInput.click()" id="dateButton">
+              <nb-icon icon="calendar"> </nb-icon>
+            </button>
             <nb-datepicker #datepicker></nb-datepicker>
-            <input nbInput [nbDatepicker]="datepicker" placeholder="mm/dd/yyyy">
+            <input nbInput [nbDatepicker]="datepicker" fullWidth placeholder="mm/dd/yyyy" #dateInput>
+
             <ng-container>
               <p class="caption status-basic-100">
                 Enter a date of birth or SSN.
