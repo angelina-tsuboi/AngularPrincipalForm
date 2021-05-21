@@ -1,99 +1,100 @@
 <nb-layout>
   <nb-layout-column>
-
     <nb-card id="form">
-      <nb-card-body >
-      <p style="font-weight: bold;">Principal</p>
-      <div class="items-col">
-        <div>
-          <div class="multi-item-row">
-            <nb-form-field class="field1">
-              <input nbInput placeholder="Prefix i.e. Mr, Ms">
-            </nb-form-field>
-            <nb-form-field class="field2">
-              <input nbInput placeholder="[Choose Gender]">
-            </nb-form-field>
+      <nb-card-body>
+        <form [formGroup]="userForm">
+          <p style="font-weight: bold;">Principal</p>
+          <div class="items-col">
+            <div>
+              <div class="multi-item-row">
+                <nb-form-field>
+                  <input nbInput placeholder="Prefix i.e. Mr, Ms" >
+                </nb-form-field>
+                <nb-form-field>
+                  <input nbInput placeholder="[Choose Gender]" formControlName="gender" id="gender" [status]="(!isFieldValid('gender')) ? 'danger' : 'basic'" required required>
+                </nb-form-field>
+              </div>
+
+              <nb-form-field>
+                <input nbInput fullWidth placeholder="First Name" formControlName="firstName" id="firstName" [status]="(!isFieldValid('firstName')) ? 'danger' : 'basic'" required>
+                <ng-container>
+                  <p class="caption status-basic-100">
+                    Enter the first name.
+                  </p>
+                </ng-container>
+              </nb-form-field>
+
+              <nb-form-field>
+                <input nbInput fullWidth placeholder="Middle Name">
+              </nb-form-field>
+
+              <nb-form-field>
+                <input nbInput fullWidth placeholder="Last Name" formControlName="lastName" id="lastName" [status]="(!isFieldValid('lastName')) ? 'danger' : 'basic'" required>
+                <ng-container>
+                  <p class="caption status-basic-100">
+                    Enter the last name.
+                  </p>
+                </ng-container>
+              </nb-form-field>
+
+              <input nbInput fullWidth placeholder="Postfix ie. Dr., Jr., ll">
+            </div>
+            <div>
+              <nb-form-field>
+                <button nbSuffix nbButton ghost (click)="dateInput.click()" id="dateButton">
+                  <nb-icon icon="calendar"> </nb-icon>
+                </button>
+                <nb-datepicker #datepicker></nb-datepicker>
+                <input nbInput [nbDatepicker]="datepicker" fullWidth placeholder="mm/dd/yyyy" formControlName="date" id="date" [status]="(isFieldValid('date') || isFieldValid('ssn')) ? 'basic' : 'warning'" #dateInput>
+
+                <ng-container>
+                  <p class="caption status-basic-100">
+                    Enter a date of birth or SSN.
+                  </p>
+                </ng-container>
+              </nb-form-field>
+
+              <nb-form-field>
+                <input nbInput fullWidth placeholder="SSN: (000-00-0000)" formControlName="ssn" id="ssn" [status]="(isFieldValid('date') || isFieldValid('ssn')) ? 'basic' : 'warning'">
+                <ng-container>
+                  <p class="caption status-basic-100">
+                    Enter social security number or Dob.
+                  </p>
+                </ng-container>
+              </nb-form-field>
+
+              <nb-form-field>
+                <input nbInput fullWidth type="email" placeholder="Email">
+              </nb-form-field>
+
+              <nb-form-field>
+                <input nbInput fullWidth placeholder="Phone (000) 000-0000" type="tel">
+                <ng-container>
+                  <p class="caption status-basic-100">
+                    Enter primary phone number.
+                  </p>
+                </ng-container>
+              </nb-form-field>
+
+              <nb-form-field>
+                <input nbInput fullWidth placeholder="Alternate Phone (000) 000-0000 (EVC)" type="tel">
+                <ng-container>
+                  <p class="caption status-basic-100">
+                    Enter secondary EVC phone number (Not Required).
+                  </p>
+                </ng-container>
+              </nb-form-field>
+
+              <button nbButton type="submit" size="small" status="info" (click)="submitForm()" [disabled]="!userForm.valid">Pull Credit
+                Score</button>
+            </div>
           </div>
-         
-          <nb-form-field>
-            <input nbInput fullWidth placeholder="First Name">
-            <ng-container>
-              <p class="caption status-basic-100">
-                Enter the first name.
-              </p>
-            </ng-container>
-          </nb-form-field>
-          
-          <nb-form-field>
-            <input nbInput fullWidth placeholder="Middle Name">
-          </nb-form-field>
-          
-          <nb-form-field>
-            <input nbInput fullWidth placeholder="Last Name">
-            <ng-container>
-              <p class="caption status-basic-100">
-                Enter the last name.
-              </p>
-            </ng-container>
-          </nb-form-field>
-         
-          <input nbInput fullWidth placeholder="Postfix ie. Dr., Jr., ll">
-        </div>
-        <div>
-          <nb-form-field>
-            <button nbSuffix nbButton ghost (click)="dateInput.click()" id="dateButton">
-              <nb-icon icon="calendar"> </nb-icon>
-            </button>
-            <nb-datepicker #datepicker></nb-datepicker>
-            <input nbInput [nbDatepicker]="datepicker" fullWidth placeholder="mm/dd/yyyy" #dateInput>
-
-            <ng-container>
-              <p class="caption status-basic-100">
-                Enter a date of birth or SSN.
-              </p>
-            </ng-container>
-          </nb-form-field>
-  
-          <nb-form-field>
-            <input nbInput fullWidth placeholder="SSN: (000-00-0000)">
-            <ng-container>
-              <p class="caption status-basic-100">
-                Enter social security number or Dob.
-              </p>
-            </ng-container>
-          </nb-form-field>
-  
-          <nb-form-field>
-            <input nbInput fullWidth type="email" placeholder="Email">
-          </nb-form-field>
-  
-          <nb-form-field>
-            <input nbInput fullWidth placeholder="Phone (000) 000-0000" type="tel">
-            <ng-container>
-              <p class="caption status-basic-100">
-                Enter primary phone number.
-              </p>
-            </ng-container>
-          </nb-form-field>
-
-          <nb-form-field>
-            <input nbInput fullWidth placeholder="Alternate Phone (000) 000-0000 (EVC)" type="tel">
-            <ng-container>
-              <p class="caption status-basic-100">
-                Enter secondary EVC phone number (Not Required).
-              </p>
-            </ng-container>
-          </nb-form-field>
-
-          <button nbButton size="small" status="info">Pull Credit Score</button>
-        </div>
-      </div>
-     
-      </nb-card-body>  
+        </form>
+      </nb-card-body>
     </nb-card>
 
-    
-    
+
+
   </nb-layout-column>
 
 </nb-layout>
