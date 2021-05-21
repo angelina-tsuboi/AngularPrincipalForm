@@ -1,0 +1,27 @@
+
+#form{
+    width: 90%;
+    margin: auto;
+    .items-col{
+        display: flex;
+        justify-content: space-between;
+    
+        div{
+            width: 48%;
+        }
+    }
+
+    nb-form-field{
+        margin-bottom: 17px;
+    }
+
+    .caption{
+        margin-top: 5px !important;
+        margin-bottom: 0px !important;
+        margin-left: 2px !important;
+    }
+
+    button{
+        float: right;
+    }
+}

@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NbThemeModule, NbLayoutModule, NbCardModule, NbInputModule, NbFormFieldModule, NbIconModule, NbDatepickerModule, NbButtonModule, NbSelectModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,6 +18,15 @@ import { AppRoutingModule } from './app-routing.module';
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbEvaIconsModule,
+    NbCardModule,
+    NbIconModule,
+    FormsModule,
+    NbFormFieldModule,
+    ReactiveFormsModule,
+    NbButtonModule,
+    NbSelectModule,
+    NbDatepickerModule.forRoot(),
+    NbInputModule,
     AppRoutingModule
   ],
   providers: [],
