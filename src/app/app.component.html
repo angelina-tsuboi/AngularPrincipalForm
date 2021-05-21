@@ -11,12 +11,12 @@
                   <input nbInput placeholder="Prefix i.e. Mr, Ms" >
                 </nb-form-field>
                 <nb-form-field>
-                  <input nbInput placeholder="[Choose Gender]" formControlName="gender" id="gender" [status]="(!isFieldValid('gender')) ? 'danger' : 'basic'" required required>
+                  <input nbInput placeholder="[Choose Gender]" formControlName="gender" id="gender" [status]="(!isFieldValid('gender')) ? 'basic' : 'danger'" required required>
                 </nb-form-field>
               </div>
 
               <nb-form-field>
-                <input nbInput fullWidth placeholder="First Name" formControlName="firstName" id="firstName" [status]="(!isFieldValid('firstName')) ? 'danger' : 'basic'" required>
+                <input nbInput fullWidth placeholder="First Name" formControlName="firstName" id="firstName" [status]="(!isFieldValid('firstName')) ? 'basic' : 'danger'" required>
                 <ng-container>
                   <p class="caption status-basic-100">
                     Enter the first name.
@@ -29,7 +29,7 @@
               </nb-form-field>
 
               <nb-form-field>
-                <input nbInput fullWidth placeholder="Last Name" formControlName="lastName" id="lastName" [status]="(!isFieldValid('lastName')) ? 'danger' : 'basic'" required>
+                <input nbInput fullWidth placeholder="Last Name" formControlName="lastName" id="lastName" [status]="(!isFieldValid('lastName')) ? 'basic' : 'danger'" required>
                 <ng-container>
                   <p class="caption status-basic-100">
                     Enter the last name.
@@ -45,7 +45,7 @@
                   <nb-icon icon="calendar"> </nb-icon>
                 </button>
                 <nb-datepicker #datepicker></nb-datepicker>
-                <input nbInput [nbDatepicker]="datepicker" fullWidth placeholder="mm/dd/yyyy" formControlName="date" id="date" [status]="(isFieldValid('date') || isFieldValid('ssn')) ? 'basic' : 'warning'" #dateInput>
+                <input nbInput [nbDatepicker]="datepicker" fullWidth placeholder="mm/dd/yyyy" formControlName="date" id="date" [status]="(isFieldValid('date') || isFieldValid('ssn')) ? 'warning' : 'basic'" #dateInput>
 
                 <ng-container>
                   <p class="caption status-basic-100">
@@ -55,7 +55,7 @@
               </nb-form-field>
 
               <nb-form-field>
-                <input nbInput fullWidth placeholder="SSN: (000-00-0000)" formControlName="ssn" id="ssn" [status]="(isFieldValid('date') || isFieldValid('ssn')) ? 'basic' : 'warning'">
+                <input nbInput fullWidth placeholder="SSN: (000-00-0000)" formControlName="ssn" id="ssn" [status]="(isFieldValid('date') || isFieldValid('ssn')) ? 'warning' : 'basic'">
                 <ng-container>
                   <p class="caption status-basic-100">
                     Enter social security number or Dob.

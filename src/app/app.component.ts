@@ -49,7 +49,7 @@ export class AppComponent {
   }
 
   isFieldValid(field: string) {
-    return !this.userForm.get(field).valid && this.userForm.get(field).touched;
+    return !this.userForm.get(field).valid;
   }
 
   submitForm(){
